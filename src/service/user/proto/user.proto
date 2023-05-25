@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "./proto;user";
+
+service User {
+  rpc SendSms(SendSmsRequest) returns (SendSmsResponse) {}
+  rpc Register(RegisterRequest) returns (RegisterResponse){}
+}
+
+message SendSmsRequest {
+  string phone = 1;
+  string imgCode = 2;
+  string uuid = 3;
+}
+
+message SendSmsResponse {
+  string errno = 1;
+  string errmsg = 2;
+}
+
+message RegisterRequest{
+  string phone = 1;
+  string smsCode = 2;
+  string password = 3;
+}
+
+message RegisterResponse{
+  string errno = 1;
+  string errmsg = 2;
+}
